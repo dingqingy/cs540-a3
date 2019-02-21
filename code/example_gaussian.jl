@@ -1,11 +1,15 @@
 using JLD, PyPlot
 
 # Load multi-modal data
-data = load("mixtureData.jld")
+data = load("../data/mixtureData.jld")
 X = data["X"]
+# println(size(X))
 
 include("gaussianDensity.jl")
-model = gaussianDensity(X)
+# model = gaussianDensity(X)
+k = 3
+include("GMM.jl")
+model = GMM(X, k)
 
 # Plot data and densities (you can ignore the code below)
 plot(X[:,1],X[:,2],".")
@@ -26,3 +30,4 @@ z = model.pdf([xValues[:] yValues[:]])
 zValues = reshape(z,size(xValues))
 
 contour(xValues,yValues,zValues)
+
