@@ -32,7 +32,7 @@ function tda_predict(Xhat,X,y)
 end
 
 function tda(X,y)
-	# Implementation of GDA classifier
+	# Implementation of TDA classifier
   predict(Xhat) = tda_predict(Xhat,X,y)
   return GenericModel(predict)
 end
